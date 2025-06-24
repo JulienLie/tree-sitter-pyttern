@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "pyttern",
+      "camelcase": "Pyttern",
+      "title": "Pyttern",
+      "scope": "source.pyttern",
+      "file-types": [
+        "pyt",
+        "py"
+      ],
+      "injection-regex": "^pyttern$",
+      "class-name": "TreeSitterPyttern"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Grammar for the Pyttern Query Language",
+    "authors": [
+      {
+        "name": "Julien Liénard",
+        "email": "julien.lienard@uclouvain.be",
+        "url": "https://github.com/JulienLie"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/JulienLie/tree-sitter-pyttern"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
