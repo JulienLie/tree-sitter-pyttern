@@ -2,7 +2,7 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "pyttern",
   "inherits": "python",
-  "word": "identifier",
+  "word": "_python_identifier",
   "rules": {
     "module": {
       "type": "REPEAT",
@@ -75,67 +75,80 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "future_import_statement"
+          "name": "simple_wildcard"
         },
         {
           "type": "SYMBOL",
-          "name": "import_statement"
+          "name": "multiple_wildcard"
         },
         {
-          "type": "SYMBOL",
-          "name": "import_from_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "print_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "assert_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expression_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "return_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "delete_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "raise_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pass_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "break_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "continue_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "global_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "nonlocal_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "exec_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "type_alias_statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "future_import_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "import_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "import_from_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "print_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "assert_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "return_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "delete_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "raise_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pass_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "break_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "continue_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "global_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "nonlocal_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "exec_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "type_alias_statement"
+            }
+          ]
         }
       ]
     },
@@ -766,39 +779,52 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "if_statement"
+          "name": "compound_wildcard"
         },
         {
           "type": "SYMBOL",
-          "name": "for_statement"
+          "name": "multiple_compound_wildcard"
         },
         {
-          "type": "SYMBOL",
-          "name": "while_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "try_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "with_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "class_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "decorated_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "match_statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "if_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "for_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "while_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "try_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "with_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "function_definition"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "class_definition"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "decorated_definition"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "match_statement"
+            }
+          ]
         }
       ]
     },
@@ -6067,8 +6093,17 @@
       }
     },
     "identifier": {
-      "type": "PATTERN",
-      "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "simple_wildcard"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_python_identifier"
+        }
+      ]
     },
     "keyword_identifier": {
       "type": "CHOICE",
@@ -6217,6 +6252,64 @@
     "keyword_separator": {
       "type": "STRING",
       "value": "*"
+    },
+    "simple_wildcard": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "?"
+      }
+    },
+    "multiple_wildcard": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "?*"
+      }
+    },
+    "compound_wildcard": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "?:"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_suite"
+          }
+        }
+      ]
+    },
+    "multiple_compound_wildcard": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "?:*"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_suite"
+          }
+        }
+      ]
+    },
+    "_python_identifier": {
+      "type": "PATTERN",
+      "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
     }
   },
   "extras": [
@@ -6234,6 +6327,10 @@
     }
   ],
   "conflicts": [
+    [
+      "_simple_statements",
+      "identifier"
+    ],
     [
       "primary_expression",
       "pattern"

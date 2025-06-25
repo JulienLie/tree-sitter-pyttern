@@ -1,0 +1,115 @@
+================================================================================
+Simple multiple compound wildcard
+================================================================================
+
+def multiplications(n):
+    count = 0
+    ?:*
+        for j in range (1,n+1):
+            if n==i*j :
+                count+=1
+    return (count)
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+    (identifier)
+    (parameters
+        (identifier))
+    (block
+        (expression_statement
+        (assignment
+            (identifier)
+            (integer)))
+        (multiple_compound_wildcard
+        (block
+            (for_statement
+            (identifier)
+            (call
+                (identifier)
+                (argument_list
+                (integer)
+                (binary_operator
+                    (identifier)
+                    (integer))))
+            (block
+                (if_statement
+                (comparison_operator
+                    (identifier)
+                    (binary_operator
+                    (identifier)
+                    (identifier)))
+                (block
+                    (expression_statement
+                    (augmented_assignment
+                        (identifier)
+                        (integer)))))))))
+        (return_statement
+        (parenthesized_expression
+            (identifier))))))
+
+================================================================================
+Simple multiple compound wildcard
+================================================================================
+
+def multiplications(n):
+    count = 0
+    ?:*
+        ?:*
+            for i in range (1,n+1):
+                for j in range (1,n+1):
+                    if n==i*j :
+                        count+=1
+    return (count)
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+    (identifier)
+    (parameters
+        (identifier))
+    (block
+        (expression_statement
+        (assignment
+            (identifier)
+            (integer)))
+        (multiple_compound_wildcard
+        (block
+            (multiple_compound_wildcard
+            (block
+                (for_statement
+                (identifier)
+                (call
+                    (identifier)
+                    (argument_list
+                    (integer)
+                    (binary_operator
+                        (identifier)
+                        (integer))))
+                (block
+                    (for_statement
+                    (identifier)
+                    (call
+                        (identifier)
+                        (argument_list
+                        (integer)
+                        (binary_operator
+                            (identifier)
+                            (integer))))
+                    (block
+                        (if_statement
+                        (comparison_operator
+                            (identifier)
+                            (binary_operator
+                            (identifier)
+                            (identifier)))
+                        (block
+                            (expression_statement
+                            (augmented_assignment
+                                (identifier)
+                                (integer)))))))))))))
+        (return_statement
+        (parenthesized_expression
+            (identifier))))))
