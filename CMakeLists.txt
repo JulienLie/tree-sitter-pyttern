@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-pyttern
-        VERSION "0.1.0"
+        VERSION "0.1.1"
         DESCRIPTION "Grammar for the Pyttern Query Language"
         HOMEPAGE_URL "https://github.com/julienlie/tree-sitter-pyttern"
         LANGUAGES C)
