@@ -12,46 +12,68 @@ const python = require("tree-sitter-python/grammar");
 module.exports = grammar(python, {
   name: "pyttern",
 
-  word: $ => $._python_identifier,
+  externals: $ => [
+    $.simple_wildcard,
+    $.var_wildcard,
+    $.number_wildcard,
+    $.multiple_wildcard,
+    $._newline,
+    $._indent,
+    $._dedent,
+    $._string_start,
+    $._string_content,
+    $._escape_interpolation,
+    $._string_end,
+    $.comment,
+    $._close_paren,
+    $._close_bracket,
+    $._close_brace,
+  ],
 
   conflicts: ($, original) => [
-    [$._simple_statements, $.identifier],
     ...original
   ],
 
   rules: {
-    simple_wildcard: _ => token('?'),
-    multiple_wildcard: _ => token('?*'),
-    compound_wildcard: $ => seq(
-      token("?:"),
-      field("body", $._suite)
-    ),
-    multiple_compound_wildcard: $ => seq(
-      token("?:*"),
-      field("body", $._suite)
+    _wildcard: $ => choice(
+      $.var_wildcard,
+      $.number_wildcard,
+      $.multiple_wildcard,
+      $.simple_wildcard
     ),
 
-    // `original` is passed in automatically because we're overriding an existing rule name
-    identifier: ($, _) =>
-      choice(
-        $.simple_wildcard,
-        $._python_identifier
-      ),
+    // Overrides
+    primary_expression: ($, original) => choice(
+      $._wildcard,
+      original
+    ),
 
-    _python_identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
+    function_definition: $ => seq(
+      repeat($.decorator),
+      optional($.async),
+      'def',
+      field('name', choice($.identifier, $._wildcard)),
+      field('parameters', $.parameters),
+      optional(seq(
+        '->',
+        field('return_type', $._expression)
+      )),
+      ':',
+      field('body', $.block)
+    ),
 
-    _simple_statement: ($, original) => 
-      choice(
-        $.simple_wildcard,
-        $.multiple_wildcard,
-        original
-      ),
+    class_definition: $ => seq(
+      repeat($.decorator),
+      'class',
+      field('name', choice($.identifier, $._wildcard)),
+      field('superclasses', optional($.argument_list)),
+      ':',
+      field('body', $.block)
+    ),
 
-    _compound_statement: ($, original) => 
-      choice(
-        $.compound_wildcard,
-        $.multiple_compound_wildcard,
-        original
-      )
+    _simple_statement: ($, original) => choice(
+      $._wildcard,
+      original
+    ),
   }
 });

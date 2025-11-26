@@ -7,6 +7,10 @@
 #include <string.h>
 
 enum TokenType {
+    SIMPLE_WILDCARD,
+    VAR_WILDCARD,
+    NUMBER_WILDCARD,
+    MULTIPLE_WILDCARD,
     NEWLINE,
     INDENT,
     DEDENT,
@@ -18,7 +22,6 @@ enum TokenType {
     CLOSE_PAREN,
     CLOSE_BRACKET,
     CLOSE_BRACE,
-    EXCEPT,
 };
 
 typedef enum {
@@ -94,6 +97,60 @@ static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
 bool tree_sitter_pyttern_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
     Scanner *scanner = (Scanner *)payload;
+
+    if (lexer->lookahead == '?') {
+        lexer->advance(lexer, false);
+
+        if (lexer->lookahead == ':') {
+            return false;
+        }
+
+        if (lexer->lookahead == '*') {
+            lexer->advance(lexer, false);
+            lexer->mark_end(lexer);
+            lexer->result_symbol = MULTIPLE_WILDCARD;
+            return true;
+        }
+
+        if (lexer->lookahead == '{') {
+            lexer->advance(lexer, false);
+            while (lexer->lookahead >= '0' && lexer->lookahead <= '9') {
+                lexer->advance(lexer, false);
+            }
+            if (lexer->lookahead == ',') {
+                lexer->advance(lexer, false);
+                while (lexer->lookahead >= '0' && lexer->lookahead <= '9') {
+                    lexer->advance(lexer, false);
+                }
+            }
+            if (lexer->lookahead == '}') {
+                lexer->advance(lexer, false);
+                lexer->mark_end(lexer);
+                lexer->result_symbol = NUMBER_WILDCARD;
+                return true;
+            }
+            return false;
+        }
+
+        if ((lexer->lookahead >= 'a' && lexer->lookahead <= 'z') ||
+            (lexer->lookahead >= 'A' && lexer->lookahead <= 'Z') ||
+            lexer->lookahead == '_') {
+            lexer->advance(lexer, false);
+            while ((lexer->lookahead >= 'a' && lexer->lookahead <= 'z') ||
+                   (lexer->lookahead >= 'A' && lexer->lookahead <= 'Z') ||
+                   (lexer->lookahead >= '0' && lexer->lookahead <= '9') ||
+                   lexer->lookahead == '_') {
+                lexer->advance(lexer, false);
+            }
+            lexer->mark_end(lexer);
+            lexer->result_symbol = VAR_WILDCARD;
+            return true;
+        }
+
+        lexer->mark_end(lexer);
+        lexer->result_symbol = SIMPLE_WILDCARD;
+        return true;
+    }
 
     bool error_recovery_mode = valid_symbols[STRING_CONTENT] && valid_symbols[INDENT];
     bool within_brackets = valid_symbols[CLOSE_BRACE] || valid_symbols[CLOSE_PAREN] || valid_symbols[CLOSE_BRACKET];
@@ -228,7 +285,7 @@ bool tree_sitter_pyttern_external_scanner_scan(void *payload, TSLexer *lexer, co
             indent_length += 8;
             skip(lexer);
         } else if (lexer->lookahead == '#' && (valid_symbols[INDENT] || valid_symbols[DEDENT] ||
-                                               valid_symbols[NEWLINE] || valid_symbols[EXCEPT])) {
+                                               valid_symbols[NEWLINE])) {
             // If we haven't found an EOL yet,
             // then this is a comment after an expression:
             //   foo = bar # comment
