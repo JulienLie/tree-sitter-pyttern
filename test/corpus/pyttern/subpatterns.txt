@@ -1,0 +1,107 @@
+================================================================================
+Simple subpattern definition
+================================================================================
+
+$&MySubpattern(x, y=1)
+$#Transfo
+x = y
+
+--------------------------------------------------------------------------------
+
+(module
+  (subpattern_statements
+    (subpattern_definition
+      (simple_subpattern
+        type: (subpattern_type)
+        name: (identifier)
+        (subpattern_args
+          (subpattern_arg
+            (identifier))
+          (subpattern_arg
+            (identifier)
+            (integer)))))
+    (transformation
+      name: (identifier)
+      (expression_statement
+        (assignment
+          left: (identifier)
+          right: (identifier))))))
+
+================================================================================
+Compound subpattern definition
+================================================================================
+
+$!MySubpattern():
+  pass
+$#Transfo
+x = y
+
+--------------------------------------------------------------------------------
+
+(module
+  (subpattern_statements
+    (subpattern_definition
+      (compound_subpattern
+        (simple_subpattern
+          type: (subpattern_type)
+          name: (identifier))
+        body: (block
+          (pass_statement))))
+    (transformation
+      name: (identifier)
+      (expression_statement
+        (assignment
+          left: (identifier)
+          right: (identifier))))))
+
+================================================================================
+Multiple transformations
+================================================================================
+
+$|MySubpattern():
+  pass
+$#T1
+a = 1
+$#T2
+b = 2
+
+--------------------------------------------------------------------------------
+
+(module
+  (subpattern_statements
+    (subpattern_definition
+      (compound_subpattern
+        (simple_subpattern
+          type: (subpattern_type)
+          name: (identifier))
+        body: (block
+          (pass_statement))))
+    (transformation
+      name: (identifier)
+      (expression_statement
+        (assignment
+          left: (identifier)
+          right: (integer))))
+    (transformation
+      name: (identifier)
+      (expression_statement
+        (assignment
+          left: (identifier)
+          right: (integer))))))
+
+================================================================================
+Call wildcard with body
+================================================================================
+
+?$MySubpattern():
+  pass
+
+--------------------------------------------------------------------------------
+
+(module
+  (expression_statement
+    (identifier
+      (call_wildcard
+        name: (identifier)
+        body: (block
+          (pass_statement))))))

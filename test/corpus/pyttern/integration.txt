@@ -1,0 +1,273 @@
+================================================================================
+Abstract Factory subpattern definition
+================================================================================
+
+$&AbstractFactory(?AbstractFactory, ?CreateProductA, ?CreateProductB, ?ProductA, ?ConcreteProductA1, ?ConcreteProductA2, ?ProductB, ?ConcreteProductB1, ?CreateProductB2)
+
+$# AbstractFactory
+class ?AbstractFactory:
+    def ?CreateProductA(self, ?*):
+        ?
+
+    def ?CreateProductB(self, ?*):
+        ?
+
+$# ConcreteFactory1
+class ?ConcreteFactory1(?AbstractFactory):
+    def ?CreateProductA(self, ?*):
+        return ?ConcreteProductA1(?*)
+
+    def ?CreateProductB(self, ?*):
+        return ?ConcreteProductB1(?*)
+
+--------------------------------------------------------------------------------
+
+(module
+  (subpattern_statements
+    (subpattern_definition
+      (simple_subpattern
+        type: (subpattern_type)
+        name: (identifier)
+        (subpattern_args
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard))))))
+    (transformation
+      name: (identifier)
+      (class_definition
+        name: (identifier
+          (var_wildcard))
+        body: (block
+          (function_definition
+            name: (identifier
+              (var_wildcard))
+            parameters: (parameters
+              (identifier)
+              (identifier
+                (multiple_wildcard)))
+            body: (block
+              (expression_statement
+                (identifier
+                  (simple_wildcard)))))
+          (function_definition
+            name: (identifier
+              (var_wildcard))
+            parameters: (parameters
+              (identifier)
+              (identifier
+                (multiple_wildcard)))
+            body: (block
+              (expression_statement
+                (identifier
+                  (simple_wildcard))))))))
+    (transformation
+      name: (identifier)
+      (class_definition
+        name: (identifier
+          (var_wildcard))
+        superclasses: (argument_list
+          (identifier
+            (var_wildcard)))
+        body: (block
+          (function_definition
+            name: (identifier
+              (var_wildcard))
+            parameters: (parameters
+              (identifier)
+              (identifier
+                (multiple_wildcard)))
+            body: (block
+              (return_statement
+                (call
+                  function: (identifier
+                    (var_wildcard))
+                  arguments: (argument_list
+                    (identifier
+                      (multiple_wildcard)))))))
+          (function_definition
+            name: (identifier
+              (var_wildcard))
+            parameters: (parameters
+              (identifier)
+              (identifier
+                (multiple_wildcard)))
+            body: (block
+              (return_statement
+                (call
+                  function: (identifier
+                    (var_wildcard))
+                  arguments: (argument_list
+                    (identifier
+                      (multiple_wildcard))))))))))))
+
+================================================================================
+Simple AND subpattern call
+================================================================================
+
+?a = 0
+?b = 0
+?$Assign(?a, ?b)
+c = ?
+
+--------------------------------------------------------------------------------
+
+(module
+  (expression_statement
+    (assignment
+      left: (identifier
+        (var_wildcard))
+      right: (integer)))
+  (expression_statement
+    (assignment
+      left: (identifier
+        (var_wildcard))
+      right: (integer)))
+  (expression_statement
+    (identifier
+      (call_wildcard
+        name: (identifier)
+        (subpattern_args
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))
+          (subpattern_arg
+            (identifier
+              (var_wildcard)))))))
+  (expression_statement
+    (assignment
+      left: (identifier)
+      right: (identifier
+        (simple_wildcard)))))
+
+================================================================================
+Observer pattern query
+================================================================================
+
+class ?Subject:
+    ?*
+    def ?attach(self, ?observer):
+        ?*
+        ?list.append(?observer)
+        ?*
+
+    def ?detach(self, ?observer):
+        ?*
+        ?list.remove(?observer)
+        ?*
+
+    def ?notify(self, ?*):
+        ?*
+        for ?o in ?list:
+            ?o.?update(?*)
+        ?*
+
+--------------------------------------------------------------------------------
+
+(module
+  (class_definition
+    name: (identifier
+      (var_wildcard))
+    body: (block
+      (expression_statement
+        (identifier
+          (multiple_wildcard)))
+      (function_definition
+        name: (identifier
+          (var_wildcard))
+        parameters: (parameters
+          (identifier)
+          (identifier
+            (var_wildcard)))
+        body: (block
+          (expression_statement
+            (identifier
+              (multiple_wildcard)))
+          (expression_statement
+            (call
+              function: (attribute
+                object: (identifier
+                  (var_wildcard))
+                attribute: (identifier))
+              arguments: (argument_list
+                (identifier
+                  (var_wildcard)))))
+          (expression_statement
+            (identifier
+              (multiple_wildcard)))))
+      (function_definition
+        name: (identifier
+          (var_wildcard))
+        parameters: (parameters
+          (identifier)
+          (identifier
+            (var_wildcard)))
+        body: (block
+          (expression_statement
+            (identifier
+              (multiple_wildcard)))
+          (expression_statement
+            (call
+              function: (attribute
+                object: (identifier
+                  (var_wildcard))
+                attribute: (identifier))
+              arguments: (argument_list
+                (identifier
+                  (var_wildcard)))))
+          (expression_statement
+            (identifier
+              (multiple_wildcard)))))
+      (function_definition
+        name: (identifier
+          (var_wildcard))
+        parameters: (parameters
+          (identifier)
+          (identifier
+            (multiple_wildcard)))
+        body: (block
+          (expression_statement
+            (identifier
+              (multiple_wildcard)))
+          (for_statement
+            left: (identifier
+              (var_wildcard))
+            right: (identifier
+              (var_wildcard))
+            body: (block
+              (expression_statement
+                (call
+                  function: (attribute
+                    object: (identifier
+                      (var_wildcard))
+                    attribute: (identifier
+                      (var_wildcard)))
+                  arguments: (argument_list
+                    (identifier
+                      (multiple_wildcard)))))))
+          (expression_statement
+            (identifier
+              (multiple_wildcard))))))))

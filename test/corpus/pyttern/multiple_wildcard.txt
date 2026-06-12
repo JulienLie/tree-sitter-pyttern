@@ -1,0 +1,83 @@
+================================================================================
+Multiple wildcard as statement
+================================================================================
+
+def multiplications(n):
+    ?*
+    for i in range (1,n+1):
+        for j in range (1,n+1):
+            if n==i*j :
+                ?*
+    return (count)
+
+--------------------------------------------------------------------------------
+
+(module
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (block
+      (expression_statement
+        (identifier
+          (multiple_wildcard)))
+      (for_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (integer)
+            (binary_operator
+              (identifier)
+              (integer))))
+        (block
+          (for_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (integer)
+                (binary_operator
+                  (identifier)
+                  (integer))))
+            (block
+              (if_statement
+                (comparison_operator
+                  (identifier)
+                  (binary_operator
+                    (identifier)
+                    (identifier)))
+                (block
+                  (expression_statement
+                    (identifier
+                      (multiple_wildcard)))))))))
+      (return_statement
+        (parenthesized_expression
+          (identifier))))))
+
+================================================================================
+Multiple wildcards
+================================================================================
+
+def multiplications(n):
+    ?*
+    ?*
+    return (count)
+
+--------------------------------------------------------------------------------
+
+(module
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (block
+      (expression_statement
+        (identifier
+          (multiple_wildcard)))
+      (expression_statement
+        (identifier
+          (multiple_wildcard)))
+      (return_statement
+        (parenthesized_expression
+          (identifier))))))

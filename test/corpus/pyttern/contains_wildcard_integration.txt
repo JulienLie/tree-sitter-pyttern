@@ -1,0 +1,68 @@
+================================================================================
+Complex contains wildcard in method
+================================================================================
+
+def execute(self):
+    ?<{self.?wrappee.?execute(?*)}>
+
+--------------------------------------------------------------------------------
+
+(module
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (block
+      (expression_statement
+        (identifier
+          (contains_wildcard
+            (call
+              (attribute
+                (attribute
+                  (identifier)
+                  (identifier
+                    (var_wildcard)))
+                (identifier
+                  (var_wildcard)))
+              (argument_list
+                (identifier
+                  (multiple_wildcard))))))))))
+
+================================================================================
+Contains wildcard with function call
+================================================================================
+
+?<{?var(?*)}>
+
+--------------------------------------------------------------------------------
+
+(module
+  (expression_statement
+    (identifier
+      (contains_wildcard
+        (call
+          (identifier
+            (var_wildcard))
+          (argument_list
+            (identifier
+              (multiple_wildcard))))))))
+
+================================================================================
+Contains wildcard with complex expression
+================================================================================
+
+x += ?<{2*i+1}>
+
+--------------------------------------------------------------------------------
+
+(module
+  (expression_statement
+    (augmented_assignment
+      (identifier)
+      (identifier
+        (contains_wildcard
+          (binary_operator
+            (binary_operator
+              (integer)
+              (identifier))
+            (integer)))))))

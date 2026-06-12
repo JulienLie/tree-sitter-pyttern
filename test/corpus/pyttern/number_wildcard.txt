@@ -1,0 +1,70 @@
+================================================================================
+Number wildcard as argument
+================================================================================
+
+def func(?{0}):
+    pass
+
+--------------------------------------------------------------------------------
+
+(module
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier
+        (number_wildcard)))
+    (block
+      (pass_statement))))
+
+================================================================================
+Number wildcard in expression
+================================================================================
+
+x = ?{1}
+y = ?{1,2}
+z = ?{3,}
+
+--------------------------------------------------------------------------------
+
+(module
+  (expression_statement
+    (assignment
+      (identifier)
+      (identifier
+        (number_wildcard))))
+  (expression_statement
+    (assignment
+      (identifier)
+      (identifier
+        (number_wildcard))))
+  (expression_statement
+    (assignment
+      (identifier)
+      (identifier
+        (number_wildcard)))))
+
+================================================================================
+Number wildcard as simple statement
+================================================================================
+
+def test():
+    ?{1}
+    ?{2,3}
+    ?{4,}
+
+--------------------------------------------------------------------------------
+
+(module
+  (function_definition
+    (identifier)
+    (parameters)
+    (block
+      (expression_statement
+        (identifier
+          (number_wildcard)))
+      (expression_statement
+        (identifier
+          (number_wildcard)))
+      (expression_statement
+        (identifier
+          (number_wildcard))))))

@@ -1,0 +1,67 @@
+================================================================================
+Simple contains wildcard in expression
+================================================================================
+
+def multiplications(n):
+    count = ?<{0}>
+    return count
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+        (identifier)
+        (parameters
+            (identifier))
+        (block
+            (expression_statement
+                (assignment
+                    (identifier)
+                    (identifier
+                        (contains_wildcard
+                            (integer)))))
+            (return_statement
+                (identifier)))))
+
+================================================================================
+Contains wildcard with assignment
+================================================================================
+
+def multiplications(n):
+    ?<{count = 0}>
+    return count
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+        (identifier)
+        (parameters
+            (identifier))
+        (block
+            (expression_statement
+                (identifier
+                    (contains_wildcard
+                        (assignment
+                            (identifier)
+                            (integer)))))
+            (return_statement
+                (identifier)))))
+
+================================================================================
+Nested contains wildcard
+================================================================================
+
+?<{?<{x=1}>}>
+
+--------------------------------------------------------------------------------
+
+(module
+    (expression_statement
+        (identifier
+            (contains_wildcard
+                (identifier
+                    (contains_wildcard
+                        (assignment
+                            (identifier)
+                            (integer))))))))

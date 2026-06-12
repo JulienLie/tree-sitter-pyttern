@@ -13,50 +13,50 @@ def multiplications(?):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
+  (function_definition
     (identifier)
     (parameters
-        (identifier
+      (identifier
         (simple_wildcard)))
     (block
-        (expression_statement
+      (expression_statement
         (assignment
-            (identifier)
-            (integer)))
-        (for_statement
+          (identifier)
+          (integer)))
+      (for_statement
         (identifier)
         (call
-            (identifier)
-            (argument_list
+          (identifier)
+          (argument_list
             (identifier
-                (simple_wildcard))
+              (simple_wildcard))
             (identifier
-                (simple_wildcard))))
+              (simple_wildcard))))
         (block
-            (for_statement
+          (for_statement
             (identifier)
             (call
-                (identifier)
-                (argument_list
+              (identifier)
+              (argument_list
                 (identifier
-                    (simple_wildcard))
+                  (simple_wildcard))
                 (identifier
-                    (simple_wildcard))))
+                  (simple_wildcard))))
             (block
-                (if_statement
+              (if_statement
                 (comparison_operator
-                    (identifier)
-                    (binary_operator
+                  (identifier)
+                  (binary_operator
                     (identifier)
                     (identifier)))
                 (block
-                    (expression_statement
+                  (expression_statement
                     (augmented_assignment
-                        (identifier)
-                        (integer)))))))))
-        (return_statement
+                      (identifier)
+                      (integer)))))))))
+      (return_statement
         (parenthesized_expression
-            (identifier))))))
+          (identifier))))))
 
 ================================================================================
 Simple wildcard as expressions
@@ -73,40 +73,40 @@ def multiplications(n):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
+  (function_definition
     (identifier)
     (parameters
-        (identifier))
+      (identifier))
     (block
-        (expression_statement
+      (expression_statement
         (assignment
-            (identifier)
-            (identifier
+          (identifier)
+          (identifier
             (simple_wildcard))))
-        (for_statement
+      (for_statement
         (identifier
-            (simple_wildcard))
+          (simple_wildcard))
         (identifier
-            (simple_wildcard))
+          (simple_wildcard))
         (block
-            (for_statement
+          (for_statement
             (identifier
-                (simple_wildcard))
+              (simple_wildcard))
             (identifier
-                (simple_wildcard))
+              (simple_wildcard))
             (block
-                (if_statement
+              (if_statement
                 (identifier
-                    (simple_wildcard))
+                  (simple_wildcard))
                 (block
-                    (expression_statement
+                  (expression_statement
                     (augmented_assignment
-                        (identifier)
-                        (identifier
+                      (identifier)
+                      (identifier
                         (simple_wildcard))))))))))
-        (return_statement
+      (return_statement
         (identifier
-            (simple_wildcard))))))
+          (simple_wildcard))))))
 
 ================================================================================
 Simple wildcard as function name
@@ -123,50 +123,50 @@ def ?(n):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
+  (function_definition
     (identifier
-        (simple_wildcard))
+      (simple_wildcard))
     (parameters
-        (identifier))
+      (identifier))
     (block
-        (expression_statement
+      (expression_statement
         (assignment
-            (identifier)
-            (integer)))
-        (for_statement
+          (identifier)
+          (integer)))
+      (for_statement
         (identifier)
         (call
-            (identifier)
-            (argument_list
+          (identifier)
+          (argument_list
             (integer)
             (binary_operator
-                (identifier)
-                (integer))))
+              (identifier)
+              (integer))))
         (block
-            (for_statement
+          (for_statement
             (identifier)
             (call
-                (identifier)
-                (argument_list
+              (identifier)
+              (argument_list
                 (integer)
                 (binary_operator
-                    (identifier)
-                    (integer))))
+                  (identifier)
+                  (integer))))
             (block
-                (if_statement
+              (if_statement
                 (comparison_operator
-                    (identifier)
-                    (binary_operator
+                  (identifier)
+                  (binary_operator
                     (identifier)
                     (identifier)))
                 (block
-                    (expression_statement
+                  (expression_statement
                     (augmented_assignment
-                        (identifier)
-                        (integer)))))))))
-        (return_statement
+                      (identifier)
+                      (integer)))))))))
+      (return_statement
         (parenthesized_expression
-            (identifier))))))
+          (identifier))))))
 
 ================================================================================
 Simple wildcard as statement
@@ -183,40 +183,44 @@ def multiplications(n):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
+  (function_definition
     (identifier)
     (parameters
-        (identifier))
+      (identifier))
     (block
-        (simple_wildcard)
-        (for_statement
+      (expression_statement
+        (identifier
+          (simple_wildcard)))
+      (for_statement
         (identifier)
         (call
-            (identifier)
-            (argument_list
+          (identifier)
+          (argument_list
             (integer)
             (binary_operator
-                (identifier)
-                (integer))))
+              (identifier)
+              (integer))))
         (block
-            (for_statement
+          (for_statement
             (identifier)
             (call
-                (identifier)
-                (argument_list
+              (identifier)
+              (argument_list
                 (integer)
                 (binary_operator
-                    (identifier)
-                    (integer))))
+                  (identifier)
+                  (integer))))
             (block
-                (if_statement
+              (if_statement
                 (comparison_operator
-                    (identifier)
-                    (binary_operator
+                  (identifier)
+                  (binary_operator
                     (identifier)
                     (identifier)))
                 (block
-                    (simple_wildcard)))))))
-        (return_statement
+                  (expression_statement
+                    (identifier
+                      (simple_wildcard)))))))))
+      (return_statement
         (parenthesized_expression
-            (identifier))))))
+          (identifier))))))

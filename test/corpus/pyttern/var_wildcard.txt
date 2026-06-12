@@ -1,0 +1,76 @@
+================================================================================
+Var wildcard as function name
+================================================================================
+
+def ?my_function(a):
+    pass
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+        (identifier
+            (var_wildcard))
+        (parameters
+            (identifier))
+        (block
+            (pass_statement))))
+
+================================================================================
+Var wildcard as class name
+================================================================================
+
+class ?MyClass:
+    pass
+
+--------------------------------------------------------------------------------
+
+(module
+    (class_definition
+        (identifier
+            (var_wildcard))
+        (block
+            (pass_statement))))
+
+================================================================================
+Var wildcard in assignment
+================================================================================
+
+?some_variable = 10
+a = ?another_variable
+
+--------------------------------------------------------------------------------
+
+(module
+    (expression_statement
+        (assignment
+            (identifier
+                (var_wildcard))
+            (integer)))
+    (expression_statement
+        (assignment
+            (identifier)
+            (identifier
+                (var_wildcard)))))
+
+================================================================================
+Var wildcard as simple statement
+================================================================================
+
+def func():
+    ?statement_var
+    ?another_statement
+
+--------------------------------------------------------------------------------
+
+(module
+    (function_definition
+        (identifier)
+        (parameters)
+        (block
+            (expression_statement
+                (identifier
+                    (var_wildcard)))
+            (expression_statement
+                (identifier
+                    (var_wildcard))))))
