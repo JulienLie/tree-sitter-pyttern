@@ -8,9 +8,8 @@ Simple call wildcard
 
 (module
   (expression_statement
-    (identifier
-      (call_wildcard
-        name: (identifier)))))
+    (call_wildcard
+      name: (identifier))))
 
 ================================================================================
 Call wildcard with arguments
@@ -22,15 +21,14 @@ Call wildcard with arguments
 
 (module
   (expression_statement
-    (identifier
-      (call_wildcard
-        name: (identifier)
-        (subpattern_args
-          (subpattern_arg
-            (identifier))
-          (subpattern_arg
-            (identifier)
-            (integer)))))))
+    (call_wildcard
+      name: (identifier)
+      (subpattern_args
+        (subpattern_arg
+          (identifier))
+        (subpattern_arg
+          (identifier)
+          (integer))))))
 
 ================================================================================
 Call wildcard as expression
@@ -44,9 +42,9 @@ a = ?$MySubpattern(?val)
   (expression_statement
     (assignment
       left: (identifier)
-      right: (identifier
-        (call_wildcard
-          name: (identifier)
-          (subpattern_args
-            (subpattern_arg
-              (identifier (var_wildcard)))))))))
+      right: (call_wildcard
+        name: (identifier)
+        (subpattern_args
+          (subpattern_arg
+            (identifier
+              (var_wildcard))))))))

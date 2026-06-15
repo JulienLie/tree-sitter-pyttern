@@ -14,19 +14,17 @@ def execute(self):
       (identifier))
     (block
       (expression_statement
-        (identifier
-          (contains_wildcard
-            (call
+        (contains_wildcard
+          (call
+            (attribute
               (attribute
-                (attribute
-                  (identifier)
-                  (identifier
-                    (var_wildcard)))
+                (identifier)
                 (identifier
                   (var_wildcard)))
-              (argument_list
-                (identifier
-                  (multiple_wildcard))))))))))
+              (identifier
+                (var_wildcard)))
+            (argument_list
+              (multiple_wildcard))))))))
 
 ================================================================================
 Contains wildcard with function call
@@ -38,14 +36,12 @@ Contains wildcard with function call
 
 (module
   (expression_statement
-    (identifier
-      (contains_wildcard
-        (call
-          (identifier
-            (var_wildcard))
-          (argument_list
-            (identifier
-              (multiple_wildcard))))))))
+    (contains_wildcard
+      (call
+        (identifier
+          (var_wildcard))
+        (argument_list
+          (multiple_wildcard))))))
 
 ================================================================================
 Contains wildcard with complex expression
@@ -59,10 +55,9 @@ x += ?<{2*i+1}>
   (expression_statement
     (augmented_assignment
       (identifier)
-      (identifier
-        (contains_wildcard
+      (contains_wildcard
+        (binary_operator
           (binary_operator
-            (binary_operator
-              (integer)
-              (identifier))
-            (integer)))))))
+            (integer)
+            (identifier))
+          (integer))))))

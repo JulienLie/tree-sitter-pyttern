@@ -9,19 +9,18 @@ def multiplications(n):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
-        (identifier)
-        (parameters
-            (identifier))
-        (block
-            (expression_statement
-                (assignment
-                    (identifier)
-                    (identifier
-                        (contains_wildcard
-                            (integer)))))
-            (return_statement
-                (identifier)))))
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (block
+      (expression_statement
+        (assignment
+          (identifier)
+          (contains_wildcard
+            (integer))))
+      (return_statement
+        (identifier)))))
 
 ================================================================================
 Contains wildcard with assignment
@@ -34,19 +33,18 @@ def multiplications(n):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
-        (identifier)
-        (parameters
-            (identifier))
-        (block
-            (expression_statement
-                (identifier
-                    (contains_wildcard
-                        (assignment
-                            (identifier)
-                            (integer)))))
-            (return_statement
-                (identifier)))))
+  (function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (block
+      (expression_statement
+        (contains_wildcard
+          (assignment
+            (identifier)
+            (integer))))
+      (return_statement
+        (identifier)))))
 
 ================================================================================
 Nested contains wildcard
@@ -57,11 +55,9 @@ Nested contains wildcard
 --------------------------------------------------------------------------------
 
 (module
-    (expression_statement
-        (identifier
-            (contains_wildcard
-                (identifier
-                    (contains_wildcard
-                        (assignment
-                            (identifier)
-                            (integer))))))))
+  (expression_statement
+    (contains_wildcard
+      (contains_wildcard
+        (assignment
+          (identifier)
+          (integer))))))

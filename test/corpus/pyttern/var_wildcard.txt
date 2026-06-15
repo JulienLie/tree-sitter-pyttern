@@ -8,13 +8,13 @@ def ?my_function(a):
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
-        (identifier
-            (var_wildcard))
-        (parameters
-            (identifier))
-        (block
-            (pass_statement))))
+  (function_definition
+    (identifier
+      (var_wildcard))
+    (parameters
+      (identifier))
+    (block
+      (pass_statement))))
 
 ================================================================================
 Var wildcard as class name
@@ -26,11 +26,11 @@ class ?MyClass:
 --------------------------------------------------------------------------------
 
 (module
-    (class_definition
-        (identifier
-            (var_wildcard))
-        (block
-            (pass_statement))))
+  (class_definition
+    (identifier
+      (var_wildcard))
+    (block
+      (pass_statement))))
 
 ================================================================================
 Var wildcard in assignment
@@ -42,16 +42,14 @@ a = ?another_variable
 --------------------------------------------------------------------------------
 
 (module
-    (expression_statement
-        (assignment
-            (identifier
-                (var_wildcard))
-            (integer)))
-    (expression_statement
-        (assignment
-            (identifier)
-            (identifier
-                (var_wildcard)))))
+  (expression_statement
+    (assignment
+      (var_wildcard)
+      (integer)))
+  (expression_statement
+    (assignment
+      (identifier)
+      (var_wildcard))))
 
 ================================================================================
 Var wildcard as simple statement
@@ -64,13 +62,11 @@ def func():
 --------------------------------------------------------------------------------
 
 (module
-    (function_definition
-        (identifier)
-        (parameters)
-        (block
-            (expression_statement
-                (identifier
-                    (var_wildcard)))
-            (expression_statement
-                (identifier
-                    (var_wildcard))))))
+  (function_definition
+    (identifier)
+    (parameters)
+    (block
+      (expression_statement
+        (var_wildcard))
+      (expression_statement
+        (var_wildcard)))))

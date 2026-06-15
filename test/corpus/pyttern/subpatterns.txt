@@ -100,8 +100,7 @@ Call wildcard with body
 
 (module
   (expression_statement
-    (identifier
-      (call_wildcard
-        name: (identifier)
-        body: (block
-          (pass_statement))))))
+    (call_wildcard
+      name: (identifier)
+      body: (block
+        (pass_statement)))))

@@ -2,7 +2,7 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "pyttern",
   "inherits": "python",
-  "word": "_python_identifier",
+  "word": "_identifier_terminal",
   "rules": {
     "module": {
       "type": "REPEAT",
@@ -3080,31 +3080,40 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_any_wildcard"
         },
         {
-          "type": "SYMBOL",
-          "name": "keyword_identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "subscript"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "attribute"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "list_splat_pattern"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "tuple_pattern"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "list_pattern"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "keyword_identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "subscript"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "attribute"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "list_splat_pattern"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "tuple_pattern"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "list_pattern"
+            }
+          ]
         }
       ]
     },
@@ -3345,36 +3354,49 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "comparison_operator"
+          "type": "PREC",
+          "value": 10,
+          "content": {
+            "type": "SYMBOL",
+            "name": "_any_wildcard"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "not_operator"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "boolean_operator"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "lambda"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "primary_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "conditional_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "named_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "as_pattern"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "comparison_operator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "not_operator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "boolean_operator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "lambda"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "primary_expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "conditional_expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "named_expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "as_pattern"
+            }
+          ]
         }
       ]
     },
@@ -6088,11 +6110,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_python_identifier"
+          "name": "_any_wildcard"
         },
         {
           "type": "SYMBOL",
-          "name": "_wildcard"
+          "name": "_identifier_terminal"
         }
       ]
     },
@@ -6244,12 +6266,9 @@
       "type": "STRING",
       "value": "*"
     },
-    "_python_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
-      }
+    "_identifier_terminal": {
+      "type": "PATTERN",
+      "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
     },
     "simple_wildcard": {
       "type": "TOKEN",
@@ -6295,16 +6314,12 @@
         }
       }
     },
-    "_wildcard": {
+    "_any_wildcard": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "multiple_wildcard"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "number_wildcard"
+          "name": "call_wildcard"
         },
         {
           "type": "SYMBOL",
@@ -6312,17 +6327,25 @@
         },
         {
           "type": "SYMBOL",
-          "name": "simple_wildcard"
-        },
-        {
-          "type": "SYMBOL",
           "name": "contains_wildcard"
         },
         {
           "type": "SYMBOL",
-          "name": "call_wildcard"
+          "name": "simple_wildcard"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiple_wildcard"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number_wildcard"
         }
       ]
+    },
+    "_expr_wildcard": {
+      "type": "SYMBOL",
+      "name": "_any_wildcard"
     },
     "call_wildcard": {
       "type": "PREC_RIGHT",
@@ -6345,13 +6368,8 @@
             "type": "FIELD",
             "name": "name",
             "content": {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_python_identifier"
-              },
-              "named": true,
-              "value": "identifier"
+              "type": "SYMBOL",
+              "name": "identifier"
             }
           },
           {
@@ -6459,13 +6477,8 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_python_identifier"
-            },
-            "named": true,
-            "value": "identifier"
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         },
         {
@@ -6606,13 +6619,8 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_python_identifier"
-            },
-            "named": true,
-            "value": "identifier"
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         },
         {
@@ -6762,7 +6770,16 @@
   ],
   "conflicts": [
     [
-      "_simple_statements",
+      "identifier",
+      "pattern"
+    ],
+    [
+      "expression",
+      "identifier"
+    ],
+    [
+      "expression",
+      "pattern",
       "identifier"
     ],
     [

@@ -19,8 +19,7 @@ def multiplications(n):
       (identifier))
     (block
       (expression_statement
-        (identifier
-          (multiple_wildcard)))
+        (multiple_wildcard))
       (for_statement
         (identifier)
         (call
@@ -49,8 +48,7 @@ def multiplications(n):
                     (identifier)))
                 (block
                   (expression_statement
-                    (identifier
-                      (multiple_wildcard)))))))))
+                    (multiple_wildcard))))))))
       (return_statement
         (parenthesized_expression
           (identifier))))))
@@ -73,11 +71,9 @@ def multiplications(n):
       (identifier))
     (block
       (expression_statement
-        (identifier
-          (multiple_wildcard)))
+        (multiple_wildcard))
       (expression_statement
-        (identifier
-          (multiple_wildcard)))
+        (multiple_wildcard))
       (return_statement
         (parenthesized_expression
           (identifier))))))

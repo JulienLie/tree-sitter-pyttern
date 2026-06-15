@@ -136,6 +136,10 @@
         "named": true
       },
       {
+        "type": "call_wildcard",
+        "named": true
+      },
+      {
         "type": "comparison_operator",
         "named": true
       },
@@ -144,7 +148,15 @@
         "named": true
       },
       {
+        "type": "contains_wildcard",
+        "named": true
+      },
+      {
         "type": "lambda",
+        "named": true
+      },
+      {
+        "type": "multiple_wildcard",
         "named": true
       },
       {
@@ -156,7 +168,19 @@
         "named": true
       },
       {
+        "type": "number_wildcard",
+        "named": true
+      },
+      {
         "type": "primary_expression",
+        "named": true
+      },
+      {
+        "type": "simple_wildcard",
+        "named": true
+      },
+      {
+        "type": "var_wildcard",
         "named": true
       }
     ]
@@ -212,6 +236,14 @@
         "named": true
       },
       {
+        "type": "call_wildcard",
+        "named": true
+      },
+      {
+        "type": "contains_wildcard",
+        "named": true
+      },
+      {
         "type": "identifier",
         "named": true
       },
@@ -224,11 +256,27 @@
         "named": true
       },
       {
+        "type": "multiple_wildcard",
+        "named": true
+      },
+      {
+        "type": "number_wildcard",
+        "named": true
+      },
+      {
+        "type": "simple_wildcard",
+        "named": true
+      },
+      {
         "type": "subscript",
         "named": true
       },
       {
         "type": "tuple_pattern",
+        "named": true
+      },
+      {
+        "type": "var_wildcard",
         "named": true
       }
     ]

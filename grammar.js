@@ -12,34 +12,51 @@ const python = require("tree-sitter-python/grammar");
 module.exports = grammar(python, {
   name: "pyttern",
 
-  word: $ => $._python_identifier,
+  word: $ => $._identifier_terminal,
 
   conflicts: ($, original) => [
-    [$._simple_statements, $.identifier],
+    [$.identifier, $.pattern],
     [$.subpattern_statements],
     ...original
   ],
 
   rules: {
-    _python_identifier: _ => token(/[_\p{XID_Start}][_\p{XID_Continue}]*/),
-
+    _identifier_terminal: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
+    
     simple_wildcard: _ => token(prec(10, '?')),
     multiple_wildcard: _ => token(prec(10, '?*')),
     number_wildcard: _ => token(prec(10, /\?\{[ \t]*[0-9]+[ \t]*(,[ \t]*[0-9]*[ \t]*)?\}/)),
     var_wildcard: _ => token(prec(10, /\?[_\p{XID_Start}][_\p{XID_Continue}]*/)),
 
-    _wildcard: $ => choice(
-      $.multiple_wildcard,
-      $.number_wildcard,
-      $.var_wildcard,
-      $.simple_wildcard,
-      $.contains_wildcard,
-      $.call_wildcard
+    identifier: ($, _) => choice(
+      $._any_wildcard,
+      $._identifier_terminal
     ),
+
+    pattern: ($, original) => choice(
+      $._any_wildcard,
+      original
+    ),
+
+    expression: ($, original) => choice(
+      prec(10, $._any_wildcard),
+      original
+    ),
+
+    _any_wildcard: $ => choice(
+      $.call_wildcard,
+      $.var_wildcard,
+      $.contains_wildcard,
+      $.simple_wildcard,
+      $.multiple_wildcard,
+      $.number_wildcard
+    ),
+
+    _expr_wildcard: $ => $._any_wildcard,
 
     call_wildcard: $ => prec.right(seq(
       token(prec(30, '?$')),
-      field("name", alias($._python_identifier, $.identifier)),
+      field("name", $.identifier),
       '(',
       optional($.subpattern_args),
       ')',
@@ -59,7 +76,7 @@ module.exports = grammar(python, {
     simple_subpattern: $ => seq(
       '$',
       field("type", $.subpattern_type),
-      field("name", alias($._python_identifier, $.identifier)),
+      field("name", $.identifier),
       '(',
       optional($.subpattern_args),
       ')'
@@ -86,7 +103,7 @@ module.exports = grammar(python, {
 
     transformation: $ => seq(
       '$#',
-      field("name", alias($._python_identifier, $.identifier)),
+      field("name", $.identifier),
       $._newline,
       $._statement
     ),
@@ -115,14 +132,6 @@ module.exports = grammar(python, {
       $._multiple_compound_wildcard_prefix,
       field("body", $._suite)
     )),
-
-
-    // `original` is passed in automatically because we're overriding an existing rule name
-    identifier: ($, _) =>
-      choice(
-        $._python_identifier,
-        $._wildcard
-      ),
 
     _compound_statement: ($, original) => 
       choice(

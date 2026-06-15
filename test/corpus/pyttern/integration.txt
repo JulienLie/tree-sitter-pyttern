@@ -71,8 +71,7 @@ class ?ConcreteFactory1(?AbstractFactory):
                 (multiple_wildcard)))
             body: (block
               (expression_statement
-                (identifier
-                  (simple_wildcard)))))
+                (simple_wildcard))))
           (function_definition
             name: (identifier
               (var_wildcard))
@@ -82,16 +81,14 @@ class ?ConcreteFactory1(?AbstractFactory):
                 (multiple_wildcard)))
             body: (block
               (expression_statement
-                (identifier
-                  (simple_wildcard))))))))
+                (simple_wildcard)))))))
     (transformation
       name: (identifier)
       (class_definition
         name: (identifier
           (var_wildcard))
         superclasses: (argument_list
-          (identifier
-            (var_wildcard)))
+          (var_wildcard))
         body: (block
           (function_definition
             name: (identifier
@@ -106,8 +103,7 @@ class ?ConcreteFactory1(?AbstractFactory):
                   function: (identifier
                     (var_wildcard))
                   arguments: (argument_list
-                    (identifier
-                      (multiple_wildcard)))))))
+                    (multiple_wildcard))))))
           (function_definition
             name: (identifier
               (var_wildcard))
@@ -121,8 +117,7 @@ class ?ConcreteFactory1(?AbstractFactory):
                   function: (identifier
                     (var_wildcard))
                   arguments: (argument_list
-                    (identifier
-                      (multiple_wildcard))))))))))))
+                    (multiple_wildcard)))))))))))
 
 ================================================================================
 Simple AND subpattern call
@@ -138,30 +133,26 @@ c = ?
 (module
   (expression_statement
     (assignment
-      left: (identifier
-        (var_wildcard))
+      left: (var_wildcard)
       right: (integer)))
   (expression_statement
     (assignment
-      left: (identifier
-        (var_wildcard))
+      left: (var_wildcard)
       right: (integer)))
   (expression_statement
-    (identifier
-      (call_wildcard
-        name: (identifier)
-        (subpattern_args
-          (subpattern_arg
-            (identifier
-              (var_wildcard)))
-          (subpattern_arg
-            (identifier
-              (var_wildcard)))))))
+    (call_wildcard
+      name: (identifier)
+      (subpattern_args
+        (subpattern_arg
+          (identifier
+            (var_wildcard)))
+        (subpattern_arg
+          (identifier
+            (var_wildcard))))))
   (expression_statement
     (assignment
       left: (identifier)
-      right: (identifier
-        (simple_wildcard)))))
+      right: (simple_wildcard))))
 
 ================================================================================
 Observer pattern query
@@ -193,8 +184,7 @@ class ?Subject:
       (var_wildcard))
     body: (block
       (expression_statement
-        (identifier
-          (multiple_wildcard)))
+        (multiple_wildcard))
       (function_definition
         name: (identifier
           (var_wildcard))
@@ -204,8 +194,7 @@ class ?Subject:
             (var_wildcard)))
         body: (block
           (expression_statement
-            (identifier
-              (multiple_wildcard)))
+            (multiple_wildcard))
           (expression_statement
             (call
               function: (attribute
@@ -213,11 +202,9 @@ class ?Subject:
                   (var_wildcard))
                 attribute: (identifier))
               arguments: (argument_list
-                (identifier
-                  (var_wildcard)))))
+                (var_wildcard))))
           (expression_statement
-            (identifier
-              (multiple_wildcard)))))
+            (multiple_wildcard))))
       (function_definition
         name: (identifier
           (var_wildcard))
@@ -227,8 +214,7 @@ class ?Subject:
             (var_wildcard)))
         body: (block
           (expression_statement
-            (identifier
-              (multiple_wildcard)))
+            (multiple_wildcard))
           (expression_statement
             (call
               function: (attribute
@@ -236,11 +222,9 @@ class ?Subject:
                   (var_wildcard))
                 attribute: (identifier))
               arguments: (argument_list
-                (identifier
-                  (var_wildcard)))))
+                (var_wildcard))))
           (expression_statement
-            (identifier
-              (multiple_wildcard)))))
+            (multiple_wildcard))))
       (function_definition
         name: (identifier
           (var_wildcard))
@@ -250,13 +234,10 @@ class ?Subject:
             (multiple_wildcard)))
         body: (block
           (expression_statement
-            (identifier
-              (multiple_wildcard)))
+            (multiple_wildcard))
           (for_statement
-            left: (identifier
-              (var_wildcard))
-            right: (identifier
-              (var_wildcard))
+            left: (var_wildcard)
+            right: (var_wildcard)
             body: (block
               (expression_statement
                 (call
@@ -266,8 +247,6 @@ class ?Subject:
                     attribute: (identifier
                       (var_wildcard)))
                   arguments: (argument_list
-                    (identifier
-                      (multiple_wildcard)))))))
+                    (multiple_wildcard))))))
           (expression_statement
-            (identifier
-              (multiple_wildcard))))))))
+            (multiple_wildcard)))))))

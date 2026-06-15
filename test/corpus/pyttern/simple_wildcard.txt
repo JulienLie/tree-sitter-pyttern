@@ -28,20 +28,16 @@ def multiplications(?):
         (call
           (identifier)
           (argument_list
-            (identifier
-              (simple_wildcard))
-            (identifier
-              (simple_wildcard))))
+            (simple_wildcard)
+            (simple_wildcard)))
         (block
           (for_statement
             (identifier)
             (call
               (identifier)
               (argument_list
-                (identifier
-                  (simple_wildcard))
-                (identifier
-                  (simple_wildcard))))
+                (simple_wildcard)
+                (simple_wildcard)))
             (block
               (if_statement
                 (comparison_operator
@@ -81,32 +77,24 @@ def multiplications(n):
       (expression_statement
         (assignment
           (identifier)
-          (identifier
-            (simple_wildcard))))
+          (simple_wildcard)))
       (for_statement
-        (identifier
-          (simple_wildcard))
-        (identifier
-          (simple_wildcard))
+        (simple_wildcard)
+        (simple_wildcard)
         (block
           (for_statement
-            (identifier
-              (simple_wildcard))
-            (identifier
-              (simple_wildcard))
+            (simple_wildcard)
+            (simple_wildcard)
             (block
               (if_statement
-                (identifier
-                  (simple_wildcard))
+                (simple_wildcard)
                 (block
                   (expression_statement
                     (augmented_assignment
                       (identifier)
-                      (identifier
-                        (simple_wildcard))))))))))
+                      (simple_wildcard)))))))))
       (return_statement
-        (identifier
-          (simple_wildcard))))))
+        (simple_wildcard)))))
 
 ================================================================================
 Simple wildcard as function name
@@ -189,8 +177,7 @@ def multiplications(n):
       (identifier))
     (block
       (expression_statement
-        (identifier
-          (simple_wildcard)))
+        (simple_wildcard))
       (for_statement
         (identifier)
         (call
@@ -219,8 +206,7 @@ def multiplications(n):
                     (identifier)))
                 (block
                   (expression_statement
-                    (identifier
-                      (simple_wildcard)))))))))
+                    (simple_wildcard))))))))
       (return_statement
         (parenthesized_expression
           (identifier))))))

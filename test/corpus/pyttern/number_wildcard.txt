@@ -30,18 +30,15 @@ z = ?{3,}
   (expression_statement
     (assignment
       (identifier)
-      (identifier
-        (number_wildcard))))
+      (number_wildcard)))
   (expression_statement
     (assignment
       (identifier)
-      (identifier
-        (number_wildcard))))
+      (number_wildcard)))
   (expression_statement
     (assignment
       (identifier)
-      (identifier
-        (number_wildcard)))))
+      (number_wildcard))))
 
 ================================================================================
 Number wildcard as simple statement
@@ -60,11 +57,8 @@ def test():
     (parameters)
     (block
       (expression_statement
-        (identifier
-          (number_wildcard)))
+        (number_wildcard))
       (expression_statement
-        (identifier
-          (number_wildcard)))
+        (number_wildcard))
       (expression_statement
-        (identifier
-          (number_wildcard))))))
+        (number_wildcard)))))

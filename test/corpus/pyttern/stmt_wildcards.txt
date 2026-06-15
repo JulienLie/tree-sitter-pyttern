@@ -16,8 +16,7 @@ def foo():
     (parameters)
     (block
       (expression_statement
-        (identifier
-          (multiple_wildcard)))
+        (multiple_wildcard))
       (expression_statement
         (assignment
           (identifier)
@@ -47,8 +46,7 @@ if True:
     (true)
     (block
       (expression_statement
-        (identifier
-          (number_wildcard)))
+        (number_wildcard))
       (expression_statement
         (assignment
           (identifier)
@@ -68,8 +66,7 @@ Named wildcard as statement
 
 (module
   (expression_statement
-    (identifier
-      (var_wildcard))))
+    (var_wildcard)))
 
 ================================================================================
 Compound wildcard with range
@@ -90,5 +87,4 @@ Compound wildcard with range
           (identifier)
           (integer)))
       (expression_statement
-        (identifier
-          (multiple_wildcard))))))
+        (multiple_wildcard)))))
