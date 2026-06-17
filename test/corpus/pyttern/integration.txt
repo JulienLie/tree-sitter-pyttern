@@ -31,40 +31,51 @@ class ?ConcreteFactory1(?AbstractFactory):
         (subpattern_args
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard)))
+              (var_wildcard
+                name: (identifier))))
           (subpattern_arg
             (identifier
-              (var_wildcard))))))
+              (var_wildcard
+                name: (identifier)))))))
     (transformation
       name: (identifier)
       (class_definition
         name: (identifier
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         body: (block
           (function_definition
             name: (identifier
-              (var_wildcard))
+              (var_wildcard
+                name: (identifier)))
             parameters: (parameters
               (identifier)
               (identifier
@@ -74,7 +85,8 @@ class ?ConcreteFactory1(?AbstractFactory):
                 (simple_wildcard))))
           (function_definition
             name: (identifier
-              (var_wildcard))
+              (var_wildcard
+                name: (identifier)))
             parameters: (parameters
               (identifier)
               (identifier
@@ -86,13 +98,16 @@ class ?ConcreteFactory1(?AbstractFactory):
       name: (identifier)
       (class_definition
         name: (identifier
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         superclasses: (argument_list
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         body: (block
           (function_definition
             name: (identifier
-              (var_wildcard))
+              (var_wildcard
+                name: (identifier)))
             parameters: (parameters
               (identifier)
               (identifier
@@ -101,12 +116,14 @@ class ?ConcreteFactory1(?AbstractFactory):
               (return_statement
                 (call
                   function: (identifier
-                    (var_wildcard))
+                    (var_wildcard
+                      name: (identifier)))
                   arguments: (argument_list
                     (multiple_wildcard))))))
           (function_definition
             name: (identifier
-              (var_wildcard))
+              (var_wildcard
+                name: (identifier)))
             parameters: (parameters
               (identifier)
               (identifier
@@ -115,7 +132,8 @@ class ?ConcreteFactory1(?AbstractFactory):
               (return_statement
                 (call
                   function: (identifier
-                    (var_wildcard))
+                    (var_wildcard
+                      name: (identifier)))
                   arguments: (argument_list
                     (multiple_wildcard)))))))))))
 
@@ -133,11 +151,13 @@ c = ?
 (module
   (expression_statement
     (assignment
-      left: (var_wildcard)
+      left: (var_wildcard
+        name: (identifier))
       right: (integer)))
   (expression_statement
     (assignment
-      left: (var_wildcard)
+      left: (var_wildcard
+        name: (identifier))
       right: (integer)))
   (expression_statement
     (call_wildcard
@@ -145,10 +165,12 @@ c = ?
       (subpattern_args
         (subpattern_arg
           (identifier
-            (var_wildcard)))
+            (var_wildcard
+              name: (identifier))))
         (subpattern_arg
           (identifier
-            (var_wildcard))))))
+            (var_wildcard
+              name: (identifier)))))))
   (expression_statement
     (assignment
       left: (identifier)
@@ -181,17 +203,20 @@ class ?Subject:
 (module
   (class_definition
     name: (identifier
-      (var_wildcard))
+      (var_wildcard
+        name: (identifier)))
     body: (block
       (expression_statement
         (multiple_wildcard))
       (function_definition
         name: (identifier
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         parameters: (parameters
           (identifier)
           (identifier
-            (var_wildcard)))
+            (var_wildcard
+              name: (identifier))))
         body: (block
           (expression_statement
             (multiple_wildcard))
@@ -199,19 +224,23 @@ class ?Subject:
             (call
               function: (attribute
                 object: (identifier
-                  (var_wildcard))
+                  (var_wildcard
+                    name: (identifier)))
                 attribute: (identifier))
               arguments: (argument_list
-                (var_wildcard))))
+                (var_wildcard
+                  name: (identifier)))))
           (expression_statement
             (multiple_wildcard))))
       (function_definition
         name: (identifier
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         parameters: (parameters
           (identifier)
           (identifier
-            (var_wildcard)))
+            (var_wildcard
+              name: (identifier))))
         body: (block
           (expression_statement
             (multiple_wildcard))
@@ -219,15 +248,18 @@ class ?Subject:
             (call
               function: (attribute
                 object: (identifier
-                  (var_wildcard))
+                  (var_wildcard
+                    name: (identifier)))
                 attribute: (identifier))
               arguments: (argument_list
-                (var_wildcard))))
+                (var_wildcard
+                  name: (identifier)))))
           (expression_statement
             (multiple_wildcard))))
       (function_definition
         name: (identifier
-          (var_wildcard))
+          (var_wildcard
+            name: (identifier)))
         parameters: (parameters
           (identifier)
           (identifier
@@ -236,16 +268,20 @@ class ?Subject:
           (expression_statement
             (multiple_wildcard))
           (for_statement
-            left: (var_wildcard)
-            right: (var_wildcard)
+            left: (var_wildcard
+              name: (identifier))
+            right: (var_wildcard
+              name: (identifier))
             body: (block
               (expression_statement
                 (call
                   function: (attribute
                     object: (identifier
-                      (var_wildcard))
+                      (var_wildcard
+                        name: (identifier)))
                     attribute: (identifier
-                      (var_wildcard)))
+                      (var_wildcard
+                        name: (identifier))))
                   arguments: (argument_list
                     (multiple_wildcard))))))
           (expression_statement

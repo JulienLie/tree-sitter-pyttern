@@ -10,7 +10,8 @@ def ?my_function(a):
 (module
   (function_definition
     (identifier
-      (var_wildcard))
+      (var_wildcard
+        (identifier)))
     (parameters
       (identifier))
     (block
@@ -28,7 +29,8 @@ class ?MyClass:
 (module
   (class_definition
     (identifier
-      (var_wildcard))
+      (var_wildcard
+        (identifier)))
     (block
       (pass_statement))))
 
@@ -44,12 +46,14 @@ a = ?another_variable
 (module
   (expression_statement
     (assignment
-      (var_wildcard)
+      (var_wildcard
+        (identifier))
       (integer)))
   (expression_statement
     (assignment
       (identifier)
-      (var_wildcard))))
+      (var_wildcard
+        (identifier)))))
 
 ================================================================================
 Var wildcard as simple statement
@@ -67,6 +71,8 @@ def func():
     (parameters)
     (block
       (expression_statement
-        (var_wildcard))
+        (var_wildcard
+          (identifier)))
       (expression_statement
-        (var_wildcard)))))
+        (var_wildcard
+          (identifier))))))

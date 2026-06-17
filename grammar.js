@@ -28,7 +28,7 @@ module.exports = grammar(python, {
     number_wildcard: _ => token(prec(10, /\?\{[ \t]*[0-9]+[ \t]*(,[ \t]*[0-9]*[ \t]*)?\}/)),
     var_wildcard: $ => seq(
         token(prec(10, '?')),
-        field("name", $._identifier_terminal)
+        field("name", alias($._identifier_terminal, $.identifier))
     ),
 
     identifier: ($, _) => choice(

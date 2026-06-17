@@ -20,9 +20,11 @@ def execute(self):
               (attribute
                 (identifier)
                 (identifier
-                  (var_wildcard)))
+                  (var_wildcard
+                    (identifier))))
               (identifier
-                (var_wildcard)))
+                (var_wildcard
+                  (identifier))))
             (argument_list
               (multiple_wildcard))))))))
 
@@ -39,7 +41,8 @@ Contains wildcard with function call
     (contains_wildcard
       (call
         (identifier
-          (var_wildcard))
+          (var_wildcard
+            (identifier)))
         (argument_list
           (multiple_wildcard))))))
 

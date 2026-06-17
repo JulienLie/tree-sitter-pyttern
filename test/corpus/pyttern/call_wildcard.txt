@@ -47,4 +47,5 @@ a = ?$MySubpattern(?val)
         (subpattern_args
           (subpattern_arg
             (identifier
-              (var_wildcard))))))))
+              (var_wildcard
+                name: (identifier)))))))))

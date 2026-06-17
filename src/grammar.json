@@ -6321,8 +6321,13 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "_identifier_terminal"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_identifier_terminal"
+            },
+            "named": true,
+            "value": "identifier"
           }
         }
       ]
