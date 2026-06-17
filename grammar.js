@@ -26,7 +26,10 @@ module.exports = grammar(python, {
     simple_wildcard: _ => token(prec(10, '?')),
     multiple_wildcard: _ => token(prec(10, '?*')),
     number_wildcard: _ => token(prec(10, /\?\{[ \t]*[0-9]+[ \t]*(,[ \t]*[0-9]*[ \t]*)?\}/)),
-    var_wildcard: _ => token(prec(10, /\?[_\p{XID_Start}][_\p{XID_Continue}]*/)),
+    var_wildcard: $ => seq(
+        token(prec(10, '?')),
+        field("name", $._identifier_terminal)
+    ),
 
     identifier: ($, _) => choice(
       $._any_wildcard,

@@ -3027,6 +3027,11 @@
     }
   },
   {
+    "type": "simple_wildcard",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "slice",
     "named": true,
     "fields": {},
@@ -3601,6 +3606,11 @@
     }
   },
   {
+    "type": "var_wildcard",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "while_statement",
     "named": true,
     "fields": {
@@ -3874,6 +3884,10 @@
     "named": false
   },
   {
+    "type": "?",
+    "named": false
+  },
+  {
     "type": "?$",
     "named": false
   },
@@ -4104,10 +4118,6 @@
     "named": false
   },
   {
-    "type": "simple_wildcard",
-    "named": true
-  },
-  {
     "type": "string_end",
     "named": true
   },
@@ -4129,10 +4139,6 @@
   },
   {
     "type": "type_conversion",
-    "named": true
-  },
-  {
-    "type": "var_wildcard",
     "named": true
   },
   {

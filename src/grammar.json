@@ -6304,15 +6304,28 @@
       }
     },
     "var_wildcard": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "PATTERN",
-          "value": "\\?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 10,
+            "content": {
+              "type": "STRING",
+              "value": "?"
+            }
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_terminal"
+          }
         }
-      }
+      ]
     },
     "_any_wildcard": {
       "type": "CHOICE",
@@ -6772,15 +6785,6 @@
     [
       "identifier",
       "pattern"
-    ],
-    [
-      "expression",
-      "identifier"
-    ],
-    [
-      "expression",
-      "pattern",
-      "identifier"
     ],
     [
       "subpattern_statements"
